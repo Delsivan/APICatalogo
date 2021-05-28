@@ -14,11 +14,11 @@ namespace APICatalogo.Models
         }
         [Key]
         public int CategoriaId { get; set; }
-        //[Required]
-        [MaxLength(80)]
+        [Required(ErrorMessage = "O nome é obrigatório")]
+        [StringLength(20, ErrorMessage = "O nome deve tem entre 2 e 20 caracteres", MinimumLength = 2)]
         public string Nome { get; set; }
-        //[Required]
-        [MaxLength(300)]
+        [Required]
+        [StringLength(300, MinimumLength = 10)]
         public string ImagemUrl { get; set; }
 
         public ICollection<Produto> Produtos { get; set; }
