@@ -3,6 +3,7 @@ using APICatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,13 +28,19 @@ namespace APICatalogo.Controllers
             return await _context.Produtos.AsNoTracking().ToListAsync();
         }
 
-        [HttpGet("{id}", Name ="ObterProduto")]
+        [HttpGet("{id}", Name = "ObterProduto")]
         public async Task<ActionResult<Produto>> Get(int id)
         {
+
+            throw new Exception("Exception ao retornar produto pelo id");
+            //string[] teste = null;
+            //if (teste.Length > 0)
+            //{ }
+
             var produto = await _context.Produtos.AsNoTracking()
                 .FirstOrDefaultAsync(p => p.ProdutoId == id);
 
-            if(produto == null)
+            if (produto == null)
             {
                 return NotFound();
             }
@@ -56,7 +63,7 @@ namespace APICatalogo.Controllers
             //      return BadRequest(ModelState);
             //}
 
-            if( id != produto.ProdutoId)
+            if (id != produto.ProdutoId)
             {
                 return BadRequest();
             }

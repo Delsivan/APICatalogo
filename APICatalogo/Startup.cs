@@ -1,3 +1,4 @@
+using ApiCatalogo.Extensions;
 using APICatalogo.Context;
 using APICatalogo.Filters;
 using APICatalogo.Services;
@@ -55,6 +56,9 @@ namespace APICatalogo
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogo v1"));
             }
+
+            //adicionando o middleware de tratamento de erros
+            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
 
