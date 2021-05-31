@@ -3,7 +3,6 @@ using APICatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,7 +31,7 @@ namespace APICatalogo.Controllers
         public async Task<ActionResult<Produto>> Get(int id)
         {
 
-            throw new Exception("Exception ao retornar produto pelo id");
+            //throw new Exception("Exception ao retornar produto pelo id");
             //string[] teste = null;
             //if (teste.Length > 0)
             //{ }
