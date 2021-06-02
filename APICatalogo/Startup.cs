@@ -2,8 +2,10 @@ using ApiCatalogo.Extensions;
 using ApiCatalogo.Logging;
 using APICatalogo.Context;
 using APICatalogo.Filters;
+using APICatalogo.Models.Mappings;
 using APICatalogo.Repository;
 using APICatalogo.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +33,13 @@ namespace APICatalogo
 
             string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
 
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             //services.AddScoped<ApiLoggingFilter>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
