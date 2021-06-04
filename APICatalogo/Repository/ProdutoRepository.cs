@@ -12,7 +12,7 @@ namespace APICatalogo.Repository
         {
 
         }
-        public PageList<Produto> GetProdutos(ProdutosParameters produtosParameters)
+        public PagedList<Produto> GetProdutos(ProdutosParameters produtosParameters)
         {
             //return Get()
             //    .OrderBy(on => on.Nome)
@@ -20,7 +20,7 @@ namespace APICatalogo.Repository
             //   .Take(produtosParameters.PageSize)
             //   .ToList();
 
-            return PageList<Produto>.ToPageList(Get().OrderBy(on => on.Nome),
+            return PagedList<Produto>.ToPagedList(Get().OrderBy(on => on.Nome),
                 produtosParameters.PageNumber, produtosParameters.PageSize);
         }
 
