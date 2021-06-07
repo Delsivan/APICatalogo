@@ -19,6 +19,8 @@ namespace APICatalogo.Models
         [StringLength(50, ErrorMessage = "A descrição deve ter no maximo{1} caracteres")]
         public string Descricao { get; set; }
         [Required]
+        [DataType(DataType.Currency)]
+        [Column(TypeName ="decimal(8, 2)")]
         [Range(1, 10000, ErrorMessage = "O preço estar ente {1} e {2}")]
         public decimal Preco { get; set; }
         [Required]
