@@ -8,6 +8,7 @@ using APICatalogo.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +49,10 @@ namespace APICatalogo
             options.UseMySql(mySqlConnection,
             ServerVersion.AutoDetect(mySqlConnection)));
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddTransient<IMeuServico, MeuServico>();
 
             services.AddControllers()
@@ -84,6 +89,10 @@ namespace APICatalogo
 
             app.UseRouting();
 
+            //adiciona o middleware de autenticacao
+            app.UseAuthentication();
+
+            //adiciona o middleware que habilita a autorizacao.
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
