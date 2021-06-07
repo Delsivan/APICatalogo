@@ -28,12 +28,12 @@ namespace APICatalogo.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> RegisterUser([FromBody]UsuarioDTO model)
+        public async Task<ActionResult> RegisterUser([FromBody] UsuarioDTO model)
         {
-           // if (!ModelState.IsValid)
-           // {
-           //     return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
-           // }
+            // if (!ModelState.IsValid)
+            // {
+            //     return BadRequest(ModelState.Values.SelectMany(e => e.Errors));
+            // }
 
             var user = new IdentityUser
             {
