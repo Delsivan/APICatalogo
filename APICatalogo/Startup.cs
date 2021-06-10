@@ -33,7 +33,14 @@ namespace APICatalogo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("PermitirApiRequest",
+                    builder =>
+                    builder.WithOrigins("https://www.apirequest.io")
+                        .WithMethods("GET")
+                        );
+            });
 
             string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
 
@@ -117,6 +124,12 @@ namespace APICatalogo
 
             //adiciona o middleware que habilita a autorizacao.
             app.UseAuthorization();
+
+            //app.UseCors(opt => opt.
+            //WithOrigins("https://www.apirequest.io")
+            //.WithMethods("GET"));
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
