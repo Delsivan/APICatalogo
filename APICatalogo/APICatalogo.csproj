@@ -4,6 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(Nowarn);1591</NoWarn>
+	</PropertyGroup>
+		
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\CURSOS\WEB API Essencial para a plataforma .NET\projetos\APICatalogo\APICatalogo\APICatalogo.xml</DocumentationFile>
   </PropertyGroup>
