@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace APICatalogo.Controllers
 {
-    [ApiVersion("2.0")]
-    [Route("api/teste")]
-    [ApiController]
+    //[ApiVersion("2.0")]
+    //[Route("api/teste")]
+    //[ApiController]
     public class TesteV2Controller : Controller
     {
         [HttpGet]

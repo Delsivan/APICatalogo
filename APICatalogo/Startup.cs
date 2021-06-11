@@ -1,7 +1,6 @@
 using ApiCatalogo.Extensions;
 using ApiCatalogo.Logging;
 using APICatalogo.Context;
-using APICatalogo.Filters;
 using APICatalogo.Models.Mappings;
 using APICatalogo.Repository;
 using APICatalogo.Services;
@@ -19,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
 
 namespace APICatalogo
@@ -95,16 +95,39 @@ namespace APICatalogo
                 options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "CatalogoAPI",
+                    Description = "Catalogo de Produtos e Categorias",
+                    TermsOfService = new Uri("https://delsivan.net/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "delsivan",
+                        Email = "delsivan@yahoo.com",
+                        Url = new Uri("https://www.delsivan.net"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Usar sobre LICX",
+                        Url = new Uri("https://delsivan.net/license"),
+                    }
+                });
+            });
+
             services.AddControllers()
                     .AddNewtonsoftJson(options =>
                     {
                         options.SerializerSettings.ReferenceLoopHandling
                         = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                     });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "APICatalogo", Version = "v1" });
-            });
+
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "APICatalogo", Version = "v1" });
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,8 +136,8 @@ namespace APICatalogo
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogo v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogo v1"));
             }
 
             loggerFactory.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
@@ -138,6 +161,15 @@ namespace APICatalogo
             //app.UseCors(opt => opt.
             //WithOrigins("https://www.apirequest.io")
             //.WithMethods("GET"));
+
+            //Swagger
+            app.UseSwagger();
+            //SwaggerUI
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                      "APICatalogo");
+            });
 
             app.UseCors();
 
