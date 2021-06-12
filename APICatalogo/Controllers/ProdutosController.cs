@@ -15,7 +15,7 @@ namespace APICatalogo.Controllers
 {
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces("application/json")]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[Controller]")]
     [ApiController]
     [EnableCors("PermitirApiRequest")]

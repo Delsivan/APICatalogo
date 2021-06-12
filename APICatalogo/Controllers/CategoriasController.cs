@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace APICatalogo.Controllers
 {
     [Produces("application/json")]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[Controller]")]
     [ApiController]
     [EnableCors("PermitirApiRequest")]
