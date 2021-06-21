@@ -134,7 +134,7 @@ namespace APICatalogo.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<CategoriaDTO>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var categoria = await _uof.CategoriaRepository.GetById(p => p.CategoriaId == id);
 
@@ -142,12 +142,14 @@ namespace APICatalogo.Controllers
             {
                 return NotFound($"A categoria com id={id} não foi encontrada");
             }
+
             _uof.CategoriaRepository.Delete(categoria);
+            
             await _uof.Commit();
 
             var categoriaDto = _mapper.Map<CategoriaDTO>(categoria);
 
-            return categoriaDto;
+            return Ok(categoriaDto);
         }
     }
 }
