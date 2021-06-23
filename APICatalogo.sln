@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICatalogo", "APICatalogo\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiCatalogo.Tests", "ApiCatalogoxUnitTests\ApiCatalogo.Tests.csproj", "{597E5CA3-3B48-4CC0-998D-3E935AE13AB7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55D5D875-A5E7-430B-AC4B-52ED8B28649D}"
+	ProjectSection(SolutionItems) = preProject
+		Consumindo_WebApi_Produtos\Consumindo_WebApi_Produtos.sln = Consumindo_WebApi_Produtos\Consumindo_WebApi_Produtos.sln
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
