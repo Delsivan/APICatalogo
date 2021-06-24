@@ -1,0 +1,20 @@
+<div>
+  <h3>Adicionar Nova Categoria</h3>
+</div>
+<form class="example-container" [formGroup]="categoriaForm" (ngSubmit)="addCategoria(categoriaForm.value)">
+  <mat-form-field appearance="legacy">
+    <mat-label>Nome da categoria</mat-label>
+    <input matInput placeholder="Nome da categoria" formControlName="nome">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <mat-label>Url da Imagem</mat-label>
+    <input  matInput name="imagemUrl" placeholder="Imagem" formControlName="imagemUrl" />
+  </mat-form-field>
+  <br>
+   <br>
+
+  <button type="submit" mat-button color="primary" >Adicionar</button>
+</form>
