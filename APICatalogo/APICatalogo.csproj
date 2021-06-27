@@ -7,6 +7,7 @@
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(Nowarn);1591</NoWarn>
+		<UserSecretsId>2fcee77e-9a96-409e-81d8-9f06eed84d5c</UserSecretsId>
 	</PropertyGroup>
 		
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

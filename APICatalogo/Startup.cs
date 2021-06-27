@@ -1,5 +1,4 @@
 using ApiCatalogo.Extensions;
-using ApiCatalogo.GraphQL;
 using ApiCatalogo.Logging;
 using APICatalogo.Context;
 using APICatalogo.Models.Mappings;
@@ -197,7 +196,6 @@ namespace APICatalogo
 
             app.UseCors("EnableCORS");
 
-            app.UseMiddleware<TesteGraphQLMiddleware>();
 
             //Adiciona o middleware que executa o endpoint
             //do request atual
