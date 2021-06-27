@@ -1,4 +1,5 @@
 using ApiCatalogo.Extensions;
+using ApiCatalogo.GraphQL;
 using ApiCatalogo.Logging;
 using APICatalogo.Context;
 using APICatalogo.Models.Mappings;
@@ -40,11 +41,11 @@ namespace APICatalogo
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("PermitirApiRequest",
+                options.AddPolicy("EnableCORS",
                     builder =>
-                    builder.WithOrigins("https://www.apirequest.io")
-                        .WithMethods("GET")
-                        );
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
             });
 
             string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
@@ -194,10 +195,16 @@ namespace APICatalogo
                       "APICatalogo");
             });
 
-            app.UseCors();
+            app.UseCors("EnableCORS");
 
+            app.UseMiddleware<TesteGraphQLMiddleware>();
+
+            //Adiciona o middleware que executa o endpoint
+            //do request atual
             app.UseEndpoints(endpoints =>
             {
+                // adiciona os endpoints para as Actions
+                // dos controladores sem especificar rotas
                 endpoints.MapControllers();
             });
         }

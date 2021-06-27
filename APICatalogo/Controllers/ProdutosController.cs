@@ -3,6 +3,7 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repository;
 using AutoMapper;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -14,12 +15,12 @@ using System.Threading.Tasks;
 
 namespace APICatalogo.Controllers
 {
+    [EnableQuery]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[Controller]")]
     [ApiController]
-    [EnableCors("PermitirApiRequest")]
     public class ProdutosController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
